@@ -1,4 +1,4 @@
-# Here CURDIR is assumed to be the root folder of the project.
+# 这里，CURDIR 假设为工程的根目录。
 
 CARLA_ROOT_FOLDER=${CURDIR}
 CARLA_BUILD_FOLDER=${CURDIR}/Build

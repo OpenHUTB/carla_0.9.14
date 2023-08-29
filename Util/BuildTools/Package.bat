@@ -5,18 +5,18 @@ rem don't remove next two empty lines after next
 set LF=^
 
 
-rem Bat script that compiles and exports the carla project (carla.org)
-rem Run it through a cmd with the x64 Visual C++ Toolset enabled.
+rem 编译和导出 carla 工程的批处理脚本
+rem 使用 x64 Visual C++ Toolset 来运行命令
 rem https://wiki.unrealengine.com/How_to_package_your_game_with_commands
 
 set LOCAL_PATH=%~dp0
 set FILE_N=-[%~n0]:
 
-rem Print batch params (debug purpose)
+rem 打印批处理参数 (为了调试)
 echo %FILE_N% [Batch params]: %*
 
 rem ==============================================================================
-rem -- Parse arguments -----------------------------------------------------------
+rem -- 解析参数 ------------------------------------------------------------------
 rem ==============================================================================
 
 set DOC_STRING="Makes a packaged version of CARLA for distribution."
@@ -90,7 +90,7 @@ if not "%1"=="" (
     goto :arg-parse
 )
 
-rem Get Unreal Engine root path
+rem 获得虚幻引擎跟路径
 if not defined UE4_ROOT (
     set KEY_NAME="HKEY_LOCAL_MACHINE\SOFTWARE\EpicGames\Unreal Engine"
     set VALUE_NAME=InstalledDirectory
@@ -102,7 +102,7 @@ if not defined UE4_ROOT (
     if not defined UE4_ROOT goto error_unreal_no_found
 )
 
-rem Set packaging paths
+rem 设置打包路径
 rem
 for /f %%i in ('git describe --tags --dirty --always') do set CARLA_VERSION=%%i
 if not defined CARLA_VERSION goto error_carla_version
@@ -113,7 +113,7 @@ set DESTINATION_ZIP=%INSTALLATION_DIR%UE4Carla/CARLA_%CARLA_VERSION%.zip
 set SOURCE=!BUILD_FOLDER!WindowsNoEditor/
 
 rem ============================================================================
-rem -- Create Carla package ----------------------------------------------------
+rem -- 创建 Carla 包 -----------------------------------------------------------
 rem ============================================================================
 
 if %DO_PACKAGE%==true (
@@ -191,7 +191,7 @@ if %DO_PACKAGE%==true (
 )
 
 rem ==============================================================================
-rem -- Adding extra files to package ---------------------------------------------
+rem -- 将额外的文件添加到包里 ----------------------------------------------------
 rem ==============================================================================
 
 if %DO_COPY_FILES%==true (
@@ -223,7 +223,7 @@ if %DO_COPY_FILES%==true (
 )
 
 rem ==============================================================================
-rem -- Zip the project -----------------------------------------------------------
+rem -- 使用 Zip 压缩工程 ---------------------------------------------------------
 rem ==============================================================================
 
 if %DO_PACKAGE%==true if %DO_TARBALL%==true (
@@ -249,7 +249,7 @@ if %DO_PACKAGE%==true if %DO_TARBALL%==true (
 )
 
 rem ==============================================================================
-rem -- Remove intermediate files -------------------------------------------------
+rem -- 删除中间文件 --------------------------------------------------------------
 rem ==============================================================================
 
 if %DO_CLEAN%==true (
@@ -258,16 +258,16 @@ if %DO_CLEAN%==true (
 )
 
 rem ==============================================================================
-rem -- Cook other packages -------------------------------------------------------
+rem -- 烘培其他包 ----------------------------------------------------------------
 rem ==============================================================================
 
-rem Set some file locations
+rem 设置一些文件的位置
 set CARLAUE4_ROOT_FOLDER=%ROOT_PATH%Unreal/CarlaUE4
 set PACKAGE_PATH_FILE=%CARLAUE4_ROOT_FOLDER%/Content/PackagePath.txt
 set MAP_LIST_FILE=%CARLAUE4_ROOT_FOLDER%/Content/MapPaths.txt
 
-rem get the packages to cook from the arguments whole string
-rem (to support multiple packages)
+rem 从整个字符串参数中获取要烘培的包
+rem (用于支持多个包)
 echo Parsing packages...
 if not "%PACKAGES%" == "Carla" (
     set ARGUMENTS=%PACKAGES:--=!LF!%
@@ -284,7 +284,7 @@ if not "%PACKAGES%" == "Carla" (
 ) else (
     set RESULT=%PACKAGES%
 )
-rem through all maps to cook (parameter)
+rem 遍历并打包所有的地图（参数）
 set PACKAGES=%RESULT:,=!LF!%
 for /f "tokens=* delims=" %%i in ("!PACKAGES!") do (
 
@@ -303,7 +303,7 @@ for /f "tokens=* delims=" %%i in ("!PACKAGES!") do (
         pushd "%CARLAUE4_ROOT_FOLDER%"
 
         echo   - prepare
-        REM # Prepare cooking of package
+        REM # 准备包的烘培
         echo Prepare cooking of package: !PACKAGE_NAME!
         call "%UE4_ROOT%/Engine/Binaries/Win64/UE4Editor.exe "^
         "%CARLAUE4_ROOT_FOLDER%/CarlaUE4.uproject"^
@@ -328,7 +328,7 @@ for /f "tokens=* delims=" %%i in ("!PACKAGES!") do (
             -cooksinglepackage^
         )
 
-        REM remove the props folder if exist
+        REM 如果存在道具目录则移除
         set PROPS_MAP_FOLDER="%PACKAGE_PATH%/Maps/PropsMap"
         if exist "%PROPS_MAP_FOLDER%" (
         rmdir /S /Q "%PROPS_MAP_FOLDER%"
@@ -342,29 +342,29 @@ for /f "tokens=* delims=" %%i in ("!PACKAGES!") do (
 
         set SUBST_PATH=!BUILD_FOLDER!CarlaUE4
 
-        REM Copy the package config file to package
+        REM 拷贝包的配置文件用于打包
         set TARGET="!SUBST_PATH!\Content\Carla\Config\"
         mkdir !TARGET:/=\!
         copy "!PACKAGE_FILE:/=\!" !TARGET:/=\!
 
-        REM Copy some files for each map to the package
-        REM MAPS_TO_COOK is read into an array as tokens separated by '+', we replace the '+' by a new line
-        REM We need the blank line after this line, don't remove it
+        REM 对于每个地图拷贝一些文件到包里
+        REM MAPS_TO_COOK 以'+"分隔的标记（使用新的一行代替）读入数组
+        REM 这行的后面需要空行，不要删除它
         set MAPS_TO_COOK=!MAPS_TO_COOK:+=^
 
         !
         set BASE_CONTENT=%INSTALLATION_DIR:/=\%..\Unreal\CarlaUE4\Content
         for /f "tokens=1 delims=+" %%a in ("!MAPS_TO_COOK!") do (
 
-            REM Get path and name of map
+            REM 获得地图的路径和名字
             for /f %%i in ("%%a") do (
                 set MAP_FOLDER=%%~pi
                 set MAP_NAME=%%~ni
-                REM Remove the '/Game' string
+                REM 删除 '/Game' 字符串
                 set MAP_FOLDER=!MAP_FOLDER:~5!
             )
 
-            REM # copy the OpenDrive file
+            REM # 拷贝 OpenDrive 文件
             set SRC=!BASE_CONTENT!!MAP_FOLDER!\OpenDrive\!MAP_NAME!.xodr
             set TRG=!BUILD_FOLDER!\CarlaUE4\Content\!MAP_FOLDER!\OpenDrive\
             if exist "!SRC!" (
@@ -372,7 +372,7 @@ for /f "tokens=* delims=" %%i in ("!PACKAGES!") do (
                 copy "!SRC!" "!TRG!"
             )
 
-            REM # copy the navigation file
+            REM # 拷贝导航文件
             set SRC=!BASE_CONTENT!!MAP_FOLDER!\Nav\!MAP_NAME!.bin
             set TRG=!BUILD_FOLDER!\CarlaUE4\Content\!MAP_FOLDER!\Nav\
             if exist "!SRC!" (
@@ -380,7 +380,7 @@ for /f "tokens=* delims=" %%i in ("!PACKAGES!") do (
                 copy "!SRC!" "!TRG!"
             )
 
-            REM # copy the traffic manager map file
+            REM # 拷贝交通地图文件
             set SRC=!BASE_CONTENT!!MAP_FOLDER!\TM\!MAP_NAME!.bin
             set TRG=!BUILD_FOLDER!\CarlaUE4\Content\!MAP_FOLDER!\TM\
             if exist "!SRC!" (

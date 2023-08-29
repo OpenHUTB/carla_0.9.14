@@ -2,7 +2,7 @@ ARGS=--all
 
 default: help
 
-# root of the project (makefile directory)
+# 工程的根目录(makefile 所在的目录)
 export ROOT_PATH=$(CURDIR)/
 
 # dependecy install/build directory (rpclib, gtest, boost)
@@ -25,6 +25,7 @@ launch: CarlaUE4Editor
 launch-only:
 	@"${CARLA_BUILD_TOOLS_FOLDER}/BuildCarlaUE4.bat" --launch $(ARGS)
 
+# 构建 CARLA 并创建用于分发的打包版本（第一次编译花3个多小时，后面只编译改变的场景）
 package: PythonAPI
 	@"${CARLA_BUILD_TOOLS_FOLDER}/Package.bat" --ue-version 4.26 $(ARGS)
 
