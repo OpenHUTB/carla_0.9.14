@@ -1,0 +1,42 @@
+{
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "1.3.1",
+	"FriendlyName": "RoadRunner CARLA Datasmith Importer",
+	"Description": "Import RoadRunner scenes into CARLA through Datasmith, setting up segmentation types and traffic signals.",
+	"Category": "RoadRunner",
+	"CreatedBy": "MathWorks",
+	"CreatedByURL": "https://www.mathworks.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://www.mathworks.com/support.html",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "RoadRunnerCarlaDatasmith",
+			"Type": "Editor",
+			"LoadingPhase": "PreLoadingScreen"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "Carla",
+			"Enabled": true
+		},
+		{
+			"Name": "DatasmithContent",
+			"Enabled": true
+		},
+		{
+			"Name": "RoadRunnerImporter",
+			"Enabled": true
+		},
+		{
+			"Name": "RoadRunnerRuntime",
+			"Enabled": true
+		}
+	]
+}

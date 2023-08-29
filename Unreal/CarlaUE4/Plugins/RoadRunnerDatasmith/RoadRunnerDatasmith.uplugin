@@ -1,0 +1,34 @@
+{
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "1.3.1",
+	"FriendlyName": "RoadRunnerDatasmith",
+	"Description": "Custom Datasmith import through Dataprep.",
+	"Category": "RoadRunner",
+	"CreatedBy": "MathWorks",
+	"CreatedByURL": "https://www.mathworks.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://www.mathworks.com/support.html",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "RoadRunnerDatasmith",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "RoadRunnerRuntime",
+			"Enabled": true
+		},
+		{
+			"Name": "DatasmithContent",
+			"Enabled": true
+		}
+	]
+}

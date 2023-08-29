@@ -1149,7 +1149,7 @@ void UCustomTerrainPhysicsComponent::BeginPlay()
   }
   if (FParse::Value(FCommandLine::Get(), TEXT("-defor-res="), Value))
   {
-    ChosenRes = static_cast<EDefResolutionType>(Value);
+    //ChosenRes = Value;//ChosenRes = static_cast<EDefResolutionType>(Value);
   }
   if (FParse::Value(FCommandLine::Get(), TEXT("-min-displacement="), Value))
   {

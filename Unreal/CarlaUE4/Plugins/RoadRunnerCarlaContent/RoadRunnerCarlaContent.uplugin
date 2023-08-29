@@ -1,0 +1,17 @@
+{
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "1.3.2",
+	"FriendlyName": "RoadRunner CARLA Content",
+	"Description": "Content for RoadRunner CARLA plugins",
+	"Category": "RoadRunner",
+	"CreatedBy": "MathWorks",
+	"CreatedByURL": "https://www.mathworks.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://www.mathworks.com/support.html",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false
+}
