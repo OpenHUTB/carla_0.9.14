@@ -9,7 +9,7 @@
 
 ### 使用
 ```bash
-# 1. 启动 carla 仿真器
+# 1. 启动 carla 仿真器（或者启动RoadRunner和Carla的协同仿真）
 cd CARLA_SIMULATOR_PATH
 ./CarlaUE4.sh
 
@@ -23,7 +23,7 @@ docker run -it --network="host" mjxu96/carlaviz:0.9.14.1 \
 docker run -it -p 8080-8081:8080-8081 mjxu96/carlaviz:0.9.14.1 
   --simulator_host host.docker.internal  --simulator_port 2000
 
-# 3. 运行示例脚本（或者启动RoadRunner和Carla的协同仿真）
+# 3. 运行示例脚本（显示RoadRunner和Carla的协同仿真这步可跳过）
 python3 example.py
 
 # 4. 打开浏览器并进入 localhost:8080
