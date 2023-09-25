@@ -9,6 +9,9 @@
 # Allows controlling a vehicle with a keyboard. For a simpler and more
 # documented example, please take a look at tutorial.py.
 
+# 如果要自己操控，新开一个命令行，进入WindowsNoEditor\PythonAPI\examples目录，在cmd中输入：
+# python manual_control.py
+
 """
 Welcome to CARLA manual control.
 

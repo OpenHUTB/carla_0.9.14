@@ -7,6 +7,9 @@
 # For a copy, see <https://opensource.org/licenses/MIT>.
 
 """在仿真环境中生成 NPCs （Non-Player Character, 游戏中的非玩家角色）"""
+# 在命令行中输入：
+# python spawn_npc.py -n 80
+# 参考：<https://blog.csdn.net/qq_39004117/article/details/105680609>。
 
 import glob
 import os

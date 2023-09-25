@@ -1,4 +1,4 @@
-CARLA Simulator
+CARLA 仿真器
 ===============
 
 [![Build Status](https://travis-ci.org/carla-simulator/carla.svg?branch=master)](https://travis-ci.org/carla-simulator/carla)
@@ -10,10 +10,13 @@ CARLA Simulator
 [![forum](Docs/img/btn/forum.png)](https://github.com/carla-simulator/carla/discussions)
 [![discord](Docs/img/btn/chat.png)](https://discord.gg/8kqACuC)
 
-CARLA is an open-source simulator for autonomous driving research. CARLA has been developed from the ground up to support development, training, and
-validation of autonomous driving systems. In addition to open-source code and protocols, CARLA provides open digital assets (urban layouts, buildings,
-vehicles) that were created for this purpose and can be used freely. The simulation platform supports flexible specification of sensor suites and
-environmental conditions.
+Carla 是一个用于研究自动驾驶的开源仿真器。
+Carla 是从头开始开发的，旨在支持自动驾驶系统的开发、训练和验证。
+除了开源代码和协议外，Carla 还提供了为此目的创建的可自由使用的开放数字资产（城市布局、建筑、车辆）。
+该仿真平台支持传感器套件和环境条件的灵活规范。
+
+
+该项目基于 Carla 0.9.14 分支进行二次开发。
 
 [![CARLA Video](Docs/img/video_thumbnail_0910.jpg)](https://www.youtube.com/watch?v=7jej46ALVRE)
 
