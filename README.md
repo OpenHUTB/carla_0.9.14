@@ -46,11 +46,11 @@ patch --strip=4 < ~/430667-13636743-patch.txt
 * [**CARLA 自动驾驶排行榜**](https://leaderboard.carla.org/): 用于验证自动驾驶技术栈的自动平台
 * [**Scenario_Runner**](https://github.com/carla-simulator/scenario_runner): Carla 0.9.X中执行交通场景的引擎
 * [**ROS-bridge**](https://github.com/carla-simulator/ros-bridge): Carla 0.9.X和ROS的接口
-* [**Driving-benchmarks**](https://github.com/carla-simulator/driving-benchmarks): 用于自动驾驶任务的基准工具
-* [**Conditional Imitation-Learning**](https://github.com/felipecode/coiltraine): Carla 中条件模拟学习（Conditional Imitation Learning）模型的训练和测试
-* [**AutoWare AV stack**](https://github.com/carla-simulator/carla-autoware): 连接AutoWare AV堆栈和 Carla 的桥接器
-* [**Reinforcement-Learning**](https://github.com/carla-simulator/reinforcement-learning): Carla 中运行条件强化学习（Conditional Reinforcement Learning）模型的代码
-* [**Map Editor**](https://github.com/carla-simulator/carla-map-editor): 独立的GUI应用程序，可通过红绿灯和交通标志信息增强RoadRunner地图
+* [**驾驶基准**](https://github.com/carla-simulator/driving-benchmarks): 用于自动驾驶任务的基准工具
+* [**条件模仿学习**](https://github.com/felipecode/coiltraine): Carla 中条件模拟学习（Conditional Imitation Learning）模型的训练和测试
+* [**AutoWare AV stack**](https://github.com/carla-simulator/carla-autoware): 连接AutoWare AV 栈和 Carla 的桥接器
+* [**强化学习**](https://github.com/carla-simulator/reinforcement-learning): Carla 中运行条件强化学习（Conditional Reinforcement Learning）模型的代码
+* [**地图编辑器**](https://github.com/carla-simulator/carla-map-editor): 独立的GUI应用程序，可通过红绿灯和交通标志信息增强RoadRunner地图
 
 
 
@@ -58,19 +58,19 @@ patch --strip=4 < ~/430667-13636743-patch.txt
 除了文档之外，还为用户创建了一些附加内容。这是一种涵盖不同主题的好方法，例如对特定模块的详细解释、功能的最新改进、未来的工作等等。
 
 *   __常规__  
-	*   艺术改进：环境和渲染 — [video](https://youtu.be/ZZaHevsz8W8) | [slides](https://drive.google.com/file/d/1l9Ztaq0Q8fNN5YPU4-5vL13eZUwsQl5P/view?usp=sharing)  
-	*   核心实现：同步、快照和地标 — [video](https://youtu.be/nyyTLmphqY4) | [slides](https://drive.google.com/file/d/1yaOwf1419qWZqE1gTSrrknsWOhawEWh_/view?usp=sharing)
-	*   数据摄入 — [video](https://youtu.be/mHiUUZ4xC9o) | [slides](https://drive.google.com/file/d/10uNBAMreKajYimIhwCqSYXjhfVs2bX31/view?usp=sharing)  
-	*   行人及其实现 — [video](https://youtu.be/Uoz2ihDwaWA) | [slides](https://drive.google.com/file/d/1Tsosin7BLP1k558shtbzUdo2ZXVKy5CB/view?usp=sharing)  
-	*   Carla 中的传感器 — [video](https://youtu.be/T8qCSet8WK0) | [slides](https://drive.google.com/file/d/1UO8ZAIOp-1xaBzcFMfn_IoipycVkUo4q/view?usp=sharing)  
+	*   艺术改进：环境和渲染 — [视频](https://youtu.be/ZZaHevsz8W8) | [PPT](https://drive.google.com/file/d/1l9Ztaq0Q8fNN5YPU4-5vL13eZUwsQl5P/view?usp=sharing)  
+	*   核心实现：同步、快照和地标 — [视频](https://youtu.be/nyyTLmphqY4) | [PPT](https://drive.google.com/file/d/1yaOwf1419qWZqE1gTSrrknsWOhawEWh_/view?usp=sharing)
+	*   数据摄入 — [视频](https://youtu.be/mHiUUZ4xC9o) | [PPT](https://drive.google.com/file/d/10uNBAMreKajYimIhwCqSYXjhfVs2bX31/view?usp=sharing)  
+	*   行人及其实现 — [视频](https://youtu.be/Uoz2ihDwaWA) | [PPT](https://drive.google.com/file/d/1Tsosin7BLP1k558shtbzUdo2ZXVKy5CB/view?usp=sharing)  
+	*   Carla 中的传感器 — [视频](https://youtu.be/T8qCSet8WK0) | [PPT](https://drive.google.com/file/d/1UO8ZAIOp-1xaBzcFMfn_IoipycVkUo4q/view?usp=sharing)  
 *   __模块__  
-	*   交通管理器的改进 — [video](https://youtu.be/n9cufaJ17eA) | [slides](https://drive.google.com/file/d/1R9uNZ6pYHSZoEBxs2vYK7swiriKbbuxo/view?usp=sharing)  
-	*   汽车软件与ROS的集成 — [video](https://youtu.be/ChIgcC2scwU) | [slides](https://drive.google.com/file/d/1uO6nBaFirrllb08OeqGAMVLApQ6EbgAt/view?usp=sharing)  
-	*   ScenarioRunner简介 — [video](https://youtu.be/dcnnNJowqzM) | [slides](https://drive.google.com/file/d/1zgoH_kLOfIw117FJGm2IVZZAIRw9U2Q0/view?usp=sharing)  
-	*   OpenSCENARIO 支持 — [slides](https://drive.google.com/file/d/1g6ATxZRTWEdstiZwfBN1_T_x_WwZs0zE/view?usp=sharing)  
+	*   交通管理器的改进 — [视频](https://youtu.be/n9cufaJ17eA) | [PPT](https://drive.google.com/file/d/1R9uNZ6pYHSZoEBxs2vYK7swiriKbbuxo/view?usp=sharing)  
+	*   汽车软件与ROS的集成 — [视频](https://youtu.be/ChIgcC2scwU) | [PPT](https://drive.google.com/file/d/1uO6nBaFirrllb08OeqGAMVLApQ6EbgAt/view?usp=sharing)  
+	*   ScenarioRunner简介 — [视频](https://youtu.be/dcnnNJowqzM) | [PPT](https://drive.google.com/file/d/1zgoH_kLOfIw117FJGm2IVZZAIRw9U2Q0/view?usp=sharing)  
+	*   OpenSCENARIO 支持 — [PPT](https://drive.google.com/file/d/1g6ATxZRTWEdstiZwfBN1_T_x_WwZs0zE/view?usp=sharing)  
 *   __特点__  
-	*   与SUMO和PTV Vissim的联合仿真 — [video](https://youtu.be/PuFSbj1PU94) | [slides](https://drive.google.com/file/d/10DgMNUBqKqWBrdiwBiAIT4DdR9ObCquI/view?usp=sharing)  
-	*   RSS-lib 的集成 — [slides](https://drive.google.com/file/d/1whREmrCv67fOMipgCk6kkiW4VPODig0A/view?usp=sharing)  
-	*   外部传感器接口（External Sensor Interface，ESI） — [video](https://youtu.be/5hXHPV9FIeY) | [slides](https://drive.google.com/file/d/1VWFaEoS12siW6NtQDUkm44BVO7tveRbJ/view?usp=sharing)  
-	*   OpenDRIVE 独立模式 — [video](https://youtu.be/U25GhofVV1Q) | [slides](https://drive.google.com/file/d/1D5VsgfX7dmgPWn7UtDDid3-OdS1HI4pY/view?usp=sharing)  
+	*   与SUMO和PTV Vissim的联合仿真 — [视频](https://youtu.be/PuFSbj1PU94) | [PPT](https://drive.google.com/file/d/10DgMNUBqKqWBrdiwBiAIT4DdR9ObCquI/view?usp=sharing)  
+	*   RSS-lib 的集成 — [PPT](https://drive.google.com/file/d/1whREmrCv67fOMipgCk6kkiW4VPODig0A/view?usp=sharing)  
+	*   外部传感器接口（External Sensor Interface，ESI） — [视频](https://youtu.be/5hXHPV9FIeY) | [PPT](https://drive.google.com/file/d/1VWFaEoS12siW6NtQDUkm44BVO7tveRbJ/view?usp=sharing)  
+	*   OpenDRIVE 独立模式 — [视频](https://youtu.be/U25GhofVV1Q) | [PPT](https://drive.google.com/file/d/1D5VsgfX7dmgPWn7UtDDid3-OdS1HI4pY/view?usp=sharing)  
 
