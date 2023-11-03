@@ -7,10 +7,10 @@
 # For a copy, see <https://opensource.org/licenses/MIT>.
 
 """
-CARLA Dynamic Weather:
+CARLA 动态天气：
 
-Connect to a CARLA Simulator instance and control the weather. Change Sun
-position smoothly with time and generate storms occasionally.
+连接到 CARLA 仿真器实例并控制天气。随着时间的推移，太阳的位置会平稳地变化，偶尔会产生风暴。
+
 """
 
 import glob

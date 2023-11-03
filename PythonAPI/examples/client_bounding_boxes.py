@@ -6,16 +6,16 @@
 # For a copy, see <https://opensource.org/licenses/MIT>.
 
 """
-An example of client-side bounding boxes with basic car controls.
+一个带有基本汽车控件的客户端边界框的示例。
 
-Controls:
+控制：
 
-    W            : throttle
-    S            : brake
-    AD           : steer
-    Space        : hand-brake
+    W            : 油门
+    S            : 刹车
+    AD           : 方向盘
+    Space        : 手刹
 
-    ESC          : quit
+    ESC          : 退出
 """
 
 # ==============================================================================

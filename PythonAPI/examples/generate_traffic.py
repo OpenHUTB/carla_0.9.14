@@ -6,7 +6,7 @@
 # This work is licensed under the terms of the MIT license.
 # For a copy, see <https://opensource.org/licenses/MIT>.
 
-"""Example script to generate traffic in the simulation"""
+"""在仿真中产生交通的示例脚本"""
 
 import glob
 import os
@@ -28,6 +28,7 @@ from carla import VehicleLightState as vls
 import argparse
 import logging
 from numpy import random
+
 
 def get_actor_blueprints(world, filter, generation):
     bps = world.get_blueprint_library().filter(filter)
@@ -52,6 +53,7 @@ def get_actor_blueprints(world, filter, generation):
     except:
         print("   Warning! Actor Generation is not valid. No actor will be spawned.")
         return []
+
 
 def main():
     argparser = argparse.ArgumentParser(
@@ -216,7 +218,7 @@ def main():
         FutureActor = carla.command.FutureActor
 
         # --------------
-        # Spawn vehicles
+        # 产生车辆
         # --------------
         batch = []
         hero = args.hero
@@ -236,7 +238,7 @@ def main():
             else:
                 blueprint.set_attribute('role_name', 'autopilot')
 
-            # spawn the cars and set their autopilot and light state all together
+            # 产生车辆并设置他们的自动驾驶和灯的状态
             batch.append(SpawnActor(blueprint, transform)
                 .then(SetAutopilot(FutureActor, True, traffic_manager.get_port())))
 
@@ -253,11 +255,11 @@ def main():
                 traffic_manager.update_vehicle_lights(actor, True)
 
         # -------------
-        # Spawn Walkers
+        # 产生行人
         # -------------
-        # some settings
-        percentagePedestriansRunning = 0.0      # how many pedestrians will run
-        percentagePedestriansCrossing = 0.0     # how many pedestrians will walk through the road
+        # 一些设置
+        percentagePedestriansRunning = 0.0      # 将会运行多少行人
+        percentagePedestriansCrossing = 0.0     # 多少行人会过马路
         if args.seedw:
             world.set_pedestrians_seed(args.seedw)
             random.seed(args.seedw)
@@ -364,8 +366,8 @@ def main():
 
         time.sleep(0.5)
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
