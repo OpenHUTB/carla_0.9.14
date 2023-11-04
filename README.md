@@ -7,7 +7,7 @@ Carla 是从头开始开发的，旨在支持自动驾驶系统的开发、训�
 该仿真平台支持传感器套件和环境条件的灵活规范。
 
 
-该项目基于 Carla 0.9.14 分支进行二次开发，参考 [文档](http://carla.readthedocs.io) 。
+该项目基于 Carla 0.9.14 分支进行二次开发，参考 [文档](http://carla.readthedocs.io) 或 [中文文档](https://openhutb.github.io/carla_doc/) 。
 
 
 ## 编译 Carla
