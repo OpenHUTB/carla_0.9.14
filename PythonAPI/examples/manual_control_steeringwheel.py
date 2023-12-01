@@ -9,12 +9,12 @@
 # documented example, please take a look at tutorial.py.
 
 """
-Welcome to CARLA manual control with steering wheel Logitech G29.
+欢迎使用带方向盘 Logitech G29 的 Carla 手动控制。
 
-To drive start by preshing the brake pedal.
-Change your wheel_config.ini according to your steering wheel.
+通过踩下制动踏板来启动。
+根据您的方向盘更改 wheel_config.ini。
 
-To find out the values of your steering wheel use jstest-gtk in Ubuntu.
+要了解方向盘的值，请在 Ubuntu 中使用 jstest-gtk。
 
 """
 

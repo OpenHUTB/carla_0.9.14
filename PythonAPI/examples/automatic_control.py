@@ -6,7 +6,7 @@
 # This work is licensed under the terms of the MIT license.
 # For a copy, see <https://opensource.org/licenses/MIT>.
 
-"""Example of automatic vehicle control from client side."""
+"""来自客户端的车辆自动控制示例。"""
 
 from __future__ import print_function
 
@@ -37,9 +37,12 @@ except ImportError:
         'cannot import numpy, make sure numpy package is installed')
 
 # ==============================================================================
-# -- Find CARLA module ---------------------------------------------------------
+# -- 找到 Carla 模块 ---------------------------------------------------------
 # ==============================================================================
 try:
+    # sys.version_info.major Python的主版本号：3
+    # sys.version_info.minor Python的次版本号：7
+    # os.name: Windows的操作系统是NT内核
     sys.path.append(glob.glob('../carla/dist/carla-*%d.%d-%s.egg' % (
         sys.version_info.major,
         sys.version_info.minor,
@@ -48,7 +51,7 @@ except IndexError:
     pass
 
 # ==============================================================================
-# -- Add PythonAPI for release mode --------------------------------------------
+# -- 为发布模式添加 PythonAPI  --------------------------------------------------
 # ==============================================================================
 try:
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + '/carla')
@@ -64,7 +67,7 @@ from agents.navigation.constant_velocity_agent import ConstantVelocityAgent  # p
 
 
 # ==============================================================================
-# -- Global functions ----------------------------------------------------------
+# -- 全局函数 ------------------------------------------------------------------
 # ==============================================================================
 
 

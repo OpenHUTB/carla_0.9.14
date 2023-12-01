@@ -6,7 +6,7 @@
 # For a copy, see <https://opensource.org/licenses/MIT>.
 
 """
-一个带有基本汽车控件的客户端边界框的示例。
+一个带有汽车边界框的客户端示例。
 
 控制：
 

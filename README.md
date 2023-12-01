@@ -9,6 +9,19 @@ Carla 是从头开始开发的，旨在支持自动驾驶系统的开发、训�
 
 该项目基于 Carla 0.9.14 分支进行二次开发，参考 [文档](http://carla.readthedocs.io) 或 [中文文档](https://openhutb.github.io/carla_doc/) 。
 
+## 入门示例
+1. 下载 [链接](https://pan.baidu.com/s/1n2fJvWff4pbtMe97GOqtvQ?pwd=hutb) 中的`software/carla_0.9.15`中的所有文件并解压；
+2. 运行`WindowsNoEditor`文件夹下的`CarlaUE4.exe`，进入场景后按`W`、`S`、`A`、`D`进行导航；
+3. 使用`Python37/python.exe`在场景中生成车辆和行人：
+```shell
+python generate_traffic.py
+```
+显示手动控制车辆：
+```shell
+python manual_control.py
+```
+
+
 
 ## 编译 Carla
 
@@ -30,7 +43,6 @@ patch --strip=4 < ~/430667-13636743-patch.txt
 
 [buildlinuxlink]: https://carla.readthedocs.io/en/latest/build_linux/
 [buildwindowslink]: https://carla.readthedocs.io/en/latest/build_windows/
-
 
 
 ### 软硬件要求
@@ -74,3 +86,21 @@ patch --strip=4 < ~/430667-13636743-patch.txt
 	*   外部传感器接口（External Sensor Interface，ESI） — [视频](https://youtu.be/5hXHPV9FIeY) | [PPT](https://drive.google.com/file/d/1VWFaEoS12siW6NtQDUkm44BVO7tveRbJ/view?usp=sharing)  
 	*   OpenDRIVE 独立模式 — [视频](https://youtu.be/U25GhofVV1Q) | [PPT](https://drive.google.com/file/d/1D5VsgfX7dmgPWn7UtDDid3-OdS1HI4pY/view?usp=sharing)  
 
+## 开发
+windows操作系统下通过vs2019打开并编译carla：
+1. 开Carla的CMake项目：
+
+File-->Open-->CMake, 在对话框中找到carla所在的本地文件夹（包含CMakeLists），选择CMakeLists.txt文件，打开，Visual studio会自动加载此仓库，解析CMakeLists.txt 文件，并提取其配置和变量信息。解析完成会从`解决方案资源管理器`中看到.cpp文件。
+
+2. 修改配置
+点击`x64-Debug`下拉菜单中的`管理配置`，并在弹出的界面点击`编辑JSON`，
+
+将所需要构建的类型改为想编译的类型，比如`Client`。
+
+3. 生成：
+点击菜单栏`生成`-`全部生成`或`部分生成`即可。
+
+## Runner
+[官方入门示例]
+
+[安装配置](https://blog.csdn.net/dfman1978/article/details/127021354)

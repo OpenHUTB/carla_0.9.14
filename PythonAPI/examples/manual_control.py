@@ -1270,7 +1270,7 @@ def game_loop(args):
 
         hud = HUD(args.width, args.height)
         world = World(sim_world, hud, args)
-        controller = KeyboardControl(world, args.autopilot)
+        controller = KeyboardControl(world, args.autopilot)  # 湖工商场景中虚幻注释掉
 
         if args.sync:
             sim_world.tick()

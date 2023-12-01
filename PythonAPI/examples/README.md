@@ -13,6 +13,14 @@
 # automatic_control.py 
 从客户端进行自动驾驶控制
 
+
+
+# 开发
+
+[使用vs打开CMakeList工程](https://zhuanlan.zhihu.com/p/58353524) 。
+
+## 结束进程
+
 客户端连接不上服务端的默认2000端口
 ```shell
 netstat -ano | findstr "2000"
@@ -28,6 +36,15 @@ CarlaUE4.exe -carla-rpc-port=3000
 ```shell
 -p 3000
 ```
+
+
+# 操作
+
+[Carla-UE4Editor导入RoadRunner地图文件](https://blog.csdn.net/DSK_981029/article/details/124851184)
+
+
+[carla-创建并导入新map](https://www.jianshu.com/p/69f945188dbb)
+
 
 # 问题
 Carla导出的场景需要将`WindowsNoEditor\CarlaUE4\Content\Carla\Maps\OpenDrive\hutb_test.xodr`的文件拷贝到`WindowsNoEditor\CarlaUE4\Content\RoadRunner\Maps`
