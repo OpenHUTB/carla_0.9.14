@@ -1,4 +1,5 @@
 # 这里，CURDIR 假设为工程的根目录。
+# 设置编译所需的一些目录变量
 
 CARLA_ROOT_FOLDER=${CURDIR}
 CARLA_BUILD_FOLDER=${CURDIR}/Build

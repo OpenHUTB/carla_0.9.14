@@ -63,6 +63,7 @@ patch --strip=4 < ~/430667-13636743-patch.txt
 * [**AutoWare AV stack**](https://github.com/carla-simulator/carla-autoware): 连接AutoWare AV 栈和 Carla 的桥接器
 * [**强化学习**](https://github.com/carla-simulator/reinforcement-learning): Carla 中运行条件强化学习（Conditional Reinforcement Learning）模型的代码
 * [**地图编辑器**](https://github.com/carla-simulator/carla-map-editor): 独立的GUI应用程序，可通过红绿灯和交通标志信息增强RoadRunner地图
+* [**智能驾驶系统**](https://github.com/CAS-LRJ/ISS): 中科院自动驾驶算法开发、测试、仿真与验证平台 
 
 
 

@@ -81,6 +81,7 @@ def main():
         default=10,
         type=int,
         help='Number of walkers (default: 10)')
+    # 避免生成的车产生碰撞
     argparser.add_argument(
         '--safe',
         action='store_true',
@@ -90,6 +91,7 @@ def main():
         metavar='PATTERN',
         default='vehicle.*',
         help='Filter vehicle model (default: "vehicle.*")')
+    # 限制某些车的生成（默认从所有车中进行生成）
     argparser.add_argument(
         '--generationv',
         metavar='G',
@@ -100,6 +102,7 @@ def main():
         metavar='PATTERN',
         default='walker.pedestrian.*',
         help='Filter pedestrian type (default: "walker.pedestrian.*")')
+    # 限制某些行人的生成
     argparser.add_argument(
         '--generationw',
         metavar='G',
@@ -167,9 +170,10 @@ def main():
         world = client.get_world()
 
         traffic_manager = client.get_trafficmanager(args.tm_port)
+        # 设置和前车的安全距离
         traffic_manager.set_global_distance_to_leading_vehicle(2.5)
         if args.respawn:
-            traffic_manager.set_respawn_dormant_vehicles(True)
+            traffic_manager.set_respawn_dormant_vehicles(True)  # True
         if args.hybrid:
             traffic_manager.set_hybrid_physics_mode(True)
             traffic_manager.set_hybrid_physics_radius(70.0)
@@ -258,8 +262,8 @@ def main():
         # 产生行人
         # -------------
         # 一些设置
-        percentagePedestriansRunning = 0.0      # 将会运行多少行人
-        percentagePedestriansCrossing = 0.0     # 多少行人会过马路
+        percentagePedestriansRunning = 0.0      # 行人跑步的百分比
+        percentagePedestriansCrossing = 1.0     # 多少行人会过马路
         if args.seedw:
             world.set_pedestrians_seed(args.seedw)
             random.seed(args.seedw)
@@ -271,21 +275,21 @@ def main():
             if (loc != None):
                 spawn_point.location = loc
                 spawn_points.append(spawn_point)
-        # 2. we spawn the walker object
+        # 2. 生成行人对象
         batch = []
         walker_speed = []
         for spawn_point in spawn_points:
             walker_bp = random.choice(blueprintsWalkers)
-            # set as not invincible
+            # 如果是无敌，将其设置为不是无敌
             if walker_bp.has_attribute('is_invincible'):
                 walker_bp.set_attribute('is_invincible', 'false')
-            # set the max speed
+            # 设置最大速度
             if walker_bp.has_attribute('speed'):
                 if (random.random() > percentagePedestriansRunning):
-                    # walking
+                    # 行走的速度：[0]:0.0   [1]:1.7（行走）   [2]:4.0（跑步）
                     walker_speed.append(walker_bp.get_attribute('speed').recommended_values[1])
                 else:
-                    # running
+                    # 跑步
                     walker_speed.append(walker_bp.get_attribute('speed').recommended_values[2])
             else:
                 print("Walker has no speed")
@@ -300,9 +304,9 @@ def main():
                 walkers_list.append({"id": results[i].actor_id})
                 walker_speed2.append(walker_speed[i])
         walker_speed = walker_speed2
-        # 3. we spawn the walker controller
+        # 3. 生成行人控制器
         batch = []
-        walker_controller_bp = world.get_blueprint_library().find('controller.ai.walker')
+        walker_controller_bp = world.get_blueprint_library().find('controller.ai.walker')  # 获取行人的ai控制器蓝图
         for i in range(len(walkers_list)):
             batch.append(SpawnActor(walker_controller_bp, carla.Transform(), walkers_list[i]["id"]))
         results = client.apply_batch_sync(batch, True)
@@ -311,32 +315,32 @@ def main():
                 logging.error(results[i].error)
             else:
                 walkers_list[i]["con"] = results[i].actor_id
-        # 4. we put together the walkers and controllers id to get the objects from their id
+        # 4. 我们将行人和控制器id放在一起，从它们的id中获取对象
         for i in range(len(walkers_list)):
             all_id.append(walkers_list[i]["con"])
             all_id.append(walkers_list[i]["id"])
         all_actors = world.get_actors(all_id)
 
-        # wait for a tick to ensure client receives the last transform of the walkers we have just created
+        # 等待滴答声，以确保客户端接收到我们刚刚创建行人的最后一次转换
         if args.asynch or not synchronous_master:
             world.wait_for_tick()
         else:
             world.tick()
 
-        # 5. initialize each controller and set target to walk to (list is [controler, actor, controller, actor ...])
-        # set how many pedestrians can cross the road
+        # 5. 初始化每个控制器并设置要步行到的目标 (列表是 [控制器, 参与者, 控制器, 参与者 ...])
+        # 设置可以穿过道路行人的数量
         world.set_pedestrians_cross_factor(percentagePedestriansCrossing)
         for i in range(0, len(all_id), 2):
-            # start walker
+            # 行人开始走
             all_actors[i].start()
-            # set walk to random point
+            # 设置走向随机点
             all_actors[i].go_to_location(world.get_random_location_from_navigation())
-            # max speed
+            # 设置行人的最大速度，默认为1.7
             all_actors[i].set_max_speed(float(walker_speed[int(i/2)]))
 
         print('spawned %d vehicles and %d walkers, press Ctrl+C to exit.' % (len(vehicles_list), len(walkers_list)))
 
-        # Example of how to use Traffic Manager parameters
+        # 如何使用交通管理器参数的示例：设置车辆的预期速度与其当前速度限制的差值，可以使用负百分比来超过速度限制
         traffic_manager.global_percentage_speed_difference(30.0)
 
         while True:
@@ -357,7 +361,7 @@ def main():
         print('\ndestroying %d vehicles' % len(vehicles_list))
         client.apply_batch([carla.command.DestroyActor(x) for x in vehicles_list])
 
-        # stop walker controllers (list is [controller, actor, controller, actor ...])
+        # 停止行人控制器 (列表结构为 [控制器, 参与者, 控制器, 参与者 ...])
         for i in range(0, len(all_id), 2):
             all_actors[i].stop()
 
