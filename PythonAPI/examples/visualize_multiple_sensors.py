@@ -14,6 +14,10 @@ It can easily be configure for any different number of sensors.
 To do that, check lines 290-308.
 """
 
+# 默认分辨率会花屏，需要修改默认分辨率：--res 1152x648
+# 参考：https://blog.csdn.net/qq_45892641/article/details/131635147
+
+
 import glob
 import os
 import sys
