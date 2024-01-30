@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-rem BAT script that creates the client and the server of LibCarla (carla.org).
+rem 创建 LibCarla 客户端和服务器的批处理脚本
 rem Run it through a cmd with the x64 Visual C++ Toolset enabled.
 
 set LOCAL_PATH=%~dp0

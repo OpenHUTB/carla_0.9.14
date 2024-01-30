@@ -11,7 +11,7 @@ export INSTALLATION_DIR=$(ROOT_PATH)Build/
 help:
 	@type "${CARLA_BUILD_TOOLS_FOLDER}\Windows.mk.help"
 
-# use PHONY to force next line as command and avoid conflict with folders of the same name
+# 使用 PHONY 强制下一行作为命令，避免与同名文件夹冲突
 .PHONY: import
 import: server
 	@"${CARLA_BUILD_TOOLS_FOLDER}/Import.py" $(ARGS)
@@ -19,6 +19,7 @@ import: server
 CarlaUE4Editor: LibCarla
 	@"${CARLA_BUILD_TOOLS_FOLDER}/BuildCarlaUE4.bat" --build $(ARGS)
 
+# 启动虚幻编辑器：make launch
 launch: CarlaUE4Editor
 	@"${CARLA_BUILD_TOOLS_FOLDER}/BuildCarlaUE4.bat" --launch $(ARGS)
 
